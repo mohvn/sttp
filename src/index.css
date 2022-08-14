@@ -1,0 +1,53 @@
+@font-face {
+  font-family: "Helvetica Now Display";
+  src: url(./fonts/HelveticaNowDisplayBold.ttf) format("truetype")
+}
+
+:root {
+  --background: #00040a;
+  --foreground: #f7f5f6;
+}
+
+body {
+  font-family: "Helvetica Now Display";
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+#Clock {
+  font-family: "Helvetica Now Display";
+  font-size: 150px;
+  top: 45%;
+  left: 50%;
+  position: absolute;
+  display: block;
+  text-align: center;
+  letter-spacing: 0.05rem;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#Search {
+  font-family: "Helvetica Now Display";
+  width: 98%;
+  overflow: hidden;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: none;
+  resize: none;
+  font-size: 40px;
+  background: transparent;
+  color: inherit;
+  border: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
