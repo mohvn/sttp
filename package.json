@@ -1,7 +1,7 @@
 {
-  "name": "settm",
+  "name": "wuzgh",
   "version": "0.1.2",
-  "homepage": "https://azpx.github.io/sttp",
+  "homepage": "https://wuzgh.github.io/sttp",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
