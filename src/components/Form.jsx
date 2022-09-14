@@ -151,6 +151,16 @@ const Form = () => {
     case /^thm$/g.test(input):
       window.open("https://tryhackme.com/", "_self", false);
       break;
+
+		// PRIMEVIDEO
+		case /^pv$/g.test(input):
+			window.open("https://primevideo.com/", "_self", false);
+			break;
+
+		case /^p$/g.test(input):
+			window.open("https://pinterest.com/", "_self", false);
+			break;
+
     case /^thm\/+/g.test(input):
       let thm_input = input.replace(/^htb\/+/g, "");
       window.open(`https://tryhackme.com/${htb_input}`, "_self", false);

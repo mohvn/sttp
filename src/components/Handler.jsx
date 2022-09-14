@@ -122,6 +122,19 @@ const Handler = () => {
       body.style.color = "#ffffff";
       break;
 
+		// PRIME VIDEO
+		case /^pv\/+/g.test(input):
+		case /^pv$/g.test(input):
+			body.style.backgroundColor = "#1b242f";
+			body.style.color = "#ffffff";
+			break;
+
+		case /^p\/+/g.test(input):
+		case /^p$/g.test(input):
+			body.style.backgroundColor = "#c42027";
+			body.style.color = "#ffffff";
+			break;
+
     default:
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#00040a";
