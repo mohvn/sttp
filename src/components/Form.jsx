@@ -202,7 +202,7 @@ const Form = () => {
       break
 
     default:
-      window.open(`https://duckduckgo.com/?q=${input}`, "_self", false);
+      window.open(`https://google.com/search?q=${input}`, "_self", false);
       break;
 
     }
