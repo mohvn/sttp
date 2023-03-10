@@ -7,7 +7,7 @@ const Clock = () => {
   useEffect(() =>{
     setInterval(() =>{
       const date = new Date();
-      setClockState(date.toLocaleTimeString([], {hour: 'numeric', minute: '2-digit', hour12: false}).replace(":", " "));
+      setClockState(date.toLocaleTimeString([], {hourCycle: 'h23', hour: 'numeric', minute: '2-digit'}).replace(":", " "));
     }, 5);
   }, []);
 
