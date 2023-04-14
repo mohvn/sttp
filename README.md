@@ -2,7 +2,7 @@
 
 # sttp
 
-*A minimal startpage for browser*
+*A minimal and dynamic startpage for browser*
 
 </td></tr>
 <table>
