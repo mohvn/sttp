@@ -146,6 +146,7 @@ const Handler = () => {
   React.useEffect(() => {
     // Escape to clean the search input
     window.addEventListener('keydown', (event) => {
+      console.log(event.code)
       switch (event.code) {
         case "Escape":
           Clock.style.display = "block";
@@ -165,6 +166,8 @@ const Handler = () => {
         case "OSRight":
         case "Enter":
         case "Backspace":
+        case "Meta":
+        case "MetaLeft":
           return;
         default: 
           Clock.style.display = "none";
@@ -194,7 +197,6 @@ const Handler = () => {
       body.style.color = "#f7f5f6";
       Clock.style.color = "#f7f5f6";
     })
-
 
   });
 
