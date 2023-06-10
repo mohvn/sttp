@@ -224,7 +224,7 @@ const Form = () => {
       {
         pattern: list_of_patterns.whatsapp_without_slash,
         action: () => {
-          window.open("https://web.whatsap.com/", "_self", false);
+          window.open("https://web.whatsapp.com/", "_self", false);
         }
       },
       {
