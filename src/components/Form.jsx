@@ -66,6 +66,9 @@ const Form = () => {
 
         pinterest_without_slash: /^p$/g,
         pinterest_with_slash: /^p\/.*/g,
+
+        chat_gpt_without_slash: /^c$/g,
+        chat_gpt_with_slash: /^c\/.*/g,
       }
 
     const patterns = [
@@ -335,7 +338,19 @@ const Form = () => {
         action: () => {
           window.open("https://pinterest.com/", "_self", false);
         }
-      }
+      },
+      {
+        pattern: list_of_patterns.chat_gpt_without_slash,
+        action: () => {
+          window.open("https://chat.openai.com/", "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.chat_gpt_with_slash,
+        action: () => {
+          window.open("https://chat.openai.com/", "_self", false);
+        }
+      },
     ]
 
     for (const { pattern, action } of patterns) {
