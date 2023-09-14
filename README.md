@@ -1,11 +1,6 @@
 <p align="center">
     <a href="https://github.com/nusv/sttp">
-        <img src="https://i.imgur.com/WiFjxPd.png" width="500"></a>
-    <br>
-      A minimal and dynamic startpage for browser
-    <br>
-    <br>
-
+        <img src="https://i.imgur.com/dM8hFsp.png" width="500"></a>
 </p>
 
 
