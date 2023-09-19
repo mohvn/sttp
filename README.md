@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://github.com/nusv/sttp">
-        <img src="https://i.imgur.com/dM8hFsp.png" width="500"></a>
+        <img src="https://i.imgur.com/twDCtGW.png" width="500"></a>
 </p>
 
 
