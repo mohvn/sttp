@@ -1,5 +1,4 @@
 import React from 'react';
-import Form from './Form';
 
 const Handler = () => {
 
@@ -16,7 +15,7 @@ const Handler = () => {
     case /^r$/g.test(input):
     case /^r\/+/g.test(input):
       body.style.backgroundImage = "linear-gradient(135deg, rgb(255, 132, 86), rgb(255, 69, 0))";
-      body.style.color = "#ffffff";
+      body.style.color = "#d4d4d4";
       break;
 
     // TWITTER
@@ -24,7 +23,7 @@ const Handler = () => {
     case /^tt$/g.test(input):
     case /^tt:/g.test(input):
       body.style.backgroundImage = "linear-gradient(135deg, rgb(29, 161, 242), rgb(25, 96, 143))";
-      body.style.color = "#ffffff";
+      body.style.color = "#d4d4d4";
       break;
 
     // YOUTUBE
@@ -32,7 +31,7 @@ const Handler = () => {
     case /^y$/g.test(input):
     case /^y:/g.test(input):
       body.style.backgroundImage = "linear-gradient(135deg, rgb(205, 32, 31), rgb(205, 76, 31))";
-      body.style.color = "#ffffff";
+      body.style.color = "#d4d4d4";
       break;
 
     // GITHUB
@@ -40,14 +39,14 @@ const Handler = () => {
     case /^g$/g.test(input):
     case /^g:/g.test(input):
       body.style.backgroundImage = "linear-gradient(135deg, rgb(28, 33, 40), rgb(45, 51, 59)";
-      body.style.color = "#ffffff";
+      body.style.color = "#d4d4d4";
       break;
 
     // INSTAGRAM
     case /^i\/+/g.test(input):
     case /^i$/g.test(input):
       body.style.backgroundImage = "linear-gradient(45deg, rgb(64, 93, 230), rgb(88, 81, 219), rgb(131, 58, 180), rgb(193, 53, 132), rgb(225, 48, 108), rgb(253, 29, 29)";
-      body.style.color = "#ffffff";
+      body.style.color = "#d4d4d4";
       break;
 
     // TWITCH
@@ -55,28 +54,28 @@ const Handler = () => {
     case /^tw$/g.test(input):
     case /^tw:/g.test(input):
       body.style.backgroundImage = "linear-gradient(135deg, rgb(169, 112, 255), rgb(67, 44, 101)";
-      body.style.color = "#ffffff";
+      body.style.color = "#d4d4d4";
       break;
 
     // MONKEYTYPE
     case /^mk\/+/g.test(input):
     case /^mk$/g.test(input):
       body.style.backgroundColor = "#323437";
-      body.style.color = "#ffffff";
+      body.style.color = "#d4d4d4";
       break;
 
     // SPOTIFY
     case /^s\/+/g.test(input):
     case /^s$/g.test(input):
       body.style.backgroundImage = "linear-gradient(135deg, rgb(29, 211, 94), rgb(30, 215, 96)";
-      body.style.color = "#ffffff";
+      body.style.color = "#d4d4d4";
       break;
 
     // WHATSAPP
     case /^w\/+/g.test(input):
     case /^w$/g.test(input):
       body.style.backgroundImage = "linear-gradient(135deg, rgb(37, 211, 102), rgb(18, 140, 126), rgb(7, 94, 84))";
-      body.style.color = "#ffffff";
+      body.style.color = "#d4d4d4";
       break;
 
     // TRANSLATOR
@@ -84,28 +83,28 @@ const Handler = () => {
     case /^tr$/g.test(input):
     case /^tr:/g.test(input):
       body.style.backgroundColor = "rgb(26, 115, 232)";
-      body.style.color = "#ffffff";
+      body.style.color = "#d4d4d4";
       break;
 
     // DISCORD
     case /^dc\/+/g.test(input):
     case /^dc$/g.test(input):
       body.style.backgroundColor = "#7289da";
-      body.style.color = "#ffffff";
+      body.style.color = "#d4d4d4";
       break;
 
     // GMAIL
     case /^m\/+/g.test(input):
     case /^m$/g.test(input):
       body.style.backgroundColor = "#dd5145";
-      body.style.color = "#ffffff";
+      body.style.color = "#d4d4d4";
       break;
 
     // NETFLIX
     case /^n\/+/g.test(input):
     case /^n$/g.test(input):
       body.style.backgroundImage = "linear-gradient(135deg, #E50914, #CB020C)";
-      body.style.color = "#ffffff";
+      body.style.color = "#d4d4d4";
       break;
 
     // HACKTHEBOX 
@@ -119,25 +118,25 @@ const Handler = () => {
     case /^thm\/+/g.test(input):
     case /^thm$/g.test(input):
       body.style.backgroundImage = "linear-gradient(135deg, #1C2538, #161E2D)";
-      body.style.color = "#ffffff";
+      body.style.color = "#d4d4d4";
       break;
 
 		// PRIME VIDEO
 		case /^pv\/+/g.test(input):
 		case /^pv$/g.test(input):
 			body.style.backgroundColor = "#1b242f";
-			body.style.color = "#ffffff";
+      body.style.color = "#d4d4d4";
 			break;
 
 		case /^p\/+/g.test(input):
 		case /^p$/g.test(input):
 			body.style.backgroundColor = "#c42027";
-			body.style.color = "#ffffff";
+      body.style.color = "#d4d4d4";
 			break;
 
     default:
       body.style.backgroundImage = "none";
-      body.style.backgroundColor = "#00040a";
+      body.style.backgroundColor = "#191919";
       body.style.color = "#f7f5f6";
       break;
     } 
@@ -193,9 +192,9 @@ const Handler = () => {
       Search.value = "";
 
       body.style.backgroundImage = "none";
-      body.style.backgroundColor = "#00040a";
-      body.style.color = "#f7f5f6";
-      Clock.style.color = "#f7f5f6";
+      body.style.backgroundColor = "#191919";
+      body.style.color = "#d4d4d4";
+      Clock.style.color = "#d4d4d4";
     })
 
   });
