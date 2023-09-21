@@ -137,7 +137,7 @@ const Handler = () => {
     default:
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#191919";
-      body.style.color = "#f7f5f6";
+      body.style.color = "#d4d4d4";
       break;
     } 
   }
