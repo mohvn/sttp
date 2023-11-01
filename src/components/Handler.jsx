@@ -128,9 +128,17 @@ const Handler = () => {
       body.style.color = "#d4d4d4";
 			break;
 
+    // PINTEREST
 		case /^p\/+/g.test(input):
 		case /^p$/g.test(input):
 			body.style.backgroundColor = "#c42027";
+      body.style.color = "#d4d4d4";
+			break;
+
+    // LINKEDIN
+		case /^l\/+/g.test(input):
+		case /^l$/g.test(input):
+      body.style.backgroundImage = "linear-gradient(135deg, #0a66c2, #0d86ff)";
       body.style.color = "#d4d4d4";
 			break;
 

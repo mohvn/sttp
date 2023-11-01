@@ -69,6 +69,9 @@ const Form = () => {
 
         chat_gpt_without_slash: /^c$/g,
         chat_gpt_with_slash: /^c\/.*/g,
+
+        linkedin_without_slash: /^l$/g,
+        linkedin_with_slash: /^l\/+/g,
       }
 
     const patterns = [
@@ -351,6 +354,20 @@ const Form = () => {
           window.open("https://chat.openai.com/", "_self", false);
         }
       },
+      {
+        pattern: list_of_patterns.linkedin_without_slash,
+        action: () => {
+          window.open("https://linkedin.com/", "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.linkedin_with_slash,
+        action: () => {
+          let l_input = input.replace(/^l\/+/g, "");
+          window.open(`https://www.linkedin.com/in/${l_input}`, "_self", false);
+        }
+      }
+
     ]
 
     for (const { pattern, action } of patterns) {
