@@ -142,6 +142,13 @@ const Handler = () => {
       body.style.color = "#d4d4d4";
 			break;
 
+    // ALIEXPRESS
+		case /^a\/+/g.test(input):
+		case /^a$/g.test(input):
+      body.style.backgroundImage = "linear-gradient(135deg, #E52D03, #FD9300)";
+      body.style.color = "#d4d4d4";
+			break;
+
     default:
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#191919";

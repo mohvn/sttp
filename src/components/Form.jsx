@@ -72,6 +72,9 @@ const Form = () => {
 
         linkedin_without_slash: /^l$/g,
         linkedin_with_slash: /^l\/+/g,
+
+        aliexpress_without_slash: /^a$/g,
+        aliexpress_with_slash: /^a\/+/g,
       }
 
     const patterns = [
@@ -366,7 +369,19 @@ const Form = () => {
           let l_input = input.replace(/^l\/+/g, "");
           window.open(`https://www.linkedin.com/in/${l_input}`, "_self", false);
         }
-      }
+      },
+      {
+        pattern: list_of_patterns.aliexpress_without_slash,
+        action: () => {
+          window.open(`https://www.aliexpress.com/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.aliexpress_with_slash,
+        action: () => {
+          window.open(`https://www.aliexpress.com/`, "_self", false);
+        }
+      },
 
     ]
 
