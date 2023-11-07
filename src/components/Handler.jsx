@@ -157,6 +157,14 @@ const Handler = () => {
       body.style.color = "#d4d4d4";
 			break;
 
+    // CHATGPT
+		case /^c\/+/g.test(input):
+		case /^c$/g.test(input):
+      body.style.backgroundImage = "none";
+      body.style.backgroundColor = "#343541";
+      body.style.color = "#bdbdca";
+			break;
+
     default:
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#191919";
