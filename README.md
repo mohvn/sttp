@@ -4,6 +4,9 @@
     <br><br>
     <img src="https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB">
     <img src="https://img.shields.io/badge/vite-%23646CFF.svg?style=flat&logo=vite&logoColor=white">
+    <img src="https://img.shields.io/badge/NPM-%23CB3837.svg?style=flat&logo=npm&logoColor=white">
+    <br>
+    <img src="https://img.shields.io/badge/github%20pages-121013?style=flat&logo=github&logoColor=white">
 </p>
 
 **sttp** is a minimalist homepage designed to be used as a new tab in your browser. It offers a clean, streamlined browsing experience with a modern, distraction-free design.
