@@ -149,6 +149,14 @@ const Handler = () => {
       body.style.color = "#d4d4d4";
 			break;
 
+    // TRELLO
+		case /^t\/+/g.test(input):
+		case /^t$/g.test(input):
+      body.style.backgroundImage = "none";
+      body.style.backgroundColor = "#0077bd";
+      body.style.color = "#d4d4d4";
+			break;
+
     default:
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#191919";

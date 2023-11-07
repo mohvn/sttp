@@ -75,6 +75,9 @@ const Form = () => {
 
         aliexpress_without_slash: /^a$/g,
         aliexpress_with_slash: /^a\/+/g,
+
+        trello_without_slash: /^t$/g,
+        trello_with_slash: /^t\/+/g,
       }
 
     const patterns = [
@@ -380,6 +383,18 @@ const Form = () => {
         pattern: list_of_patterns.aliexpress_with_slash,
         action: () => {
           window.open(`https://www.aliexpress.com/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.trello_without_slash,
+        action: () => {
+          window.open(`https://trello.com/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.trello_with_slash,
+        action: () => {
+          window.open(`https://trello.com/`, "_self", false);
         }
       },
 
