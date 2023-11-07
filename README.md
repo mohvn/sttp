@@ -1,7 +1,16 @@
 <p align="center">
-    <a href="https://github.com/nusv/sttp">
-        <img src="https://i.imgur.com/dxxkqQT.png" width="500"></a>
-    <h1 align="center">A minimal and dynamic startpage for browser</h1>
+    <a href="https://github.com/m0cb/sttp/">
+        <img src="https://i.imgur.com/FGINGep.png" width="300"></a>
+    <br><br>
+    <img src="https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB">
+    <img src="https://img.shields.io/badge/vite-%23646CFF.svg?style=flat&logo=vite&logoColor=white">
 </p>
+
+**sttp** is a minimalist homepage designed to be used as a new tab in your browser. It offers a clean, streamlined browsing experience with a modern, distraction-free design.
+
+<h4 align="center">
+  <a href="https://m0cb.github.io/sttp">Visit the Website</a>
+</h4>
+
 <img src="https://i.imgur.com/gJjuPwa.png">
 <img src="https://i.imgur.com/P09xCAJ.png">
