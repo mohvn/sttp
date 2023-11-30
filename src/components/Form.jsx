@@ -78,6 +78,9 @@ const Form = () => {
 
         trello_without_slash: /^t$/g,
         trello_with_slash: /^t\/+/g,
+
+        outlook_without_slash: /^o$/g,
+        outlook_with_slash: /^o\/+/g,
       }
 
     const patterns = [
@@ -122,7 +125,7 @@ const Form = () => {
       },
       {
         pattern: list_of_patterns.twitter_with_slash,
-        action: (match) => {
+        action: () => {
           let tt_input = input.replace(/^tt\/+/g, "");
           window.open(`https://twitter.com/${tt_input}`, "_self", false);
         }
@@ -395,6 +398,18 @@ const Form = () => {
         pattern: list_of_patterns.trello_with_slash,
         action: () => {
           window.open(`https://trello.com/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.outlook_without_slash,
+        action: () => {
+          window.open(`https://outlook.live.com/mail/0/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.outlook_with_slash,
+        action: () => {
+          window.open(`https://outlook.live.com/mail/0/`, "_self", false);
         }
       },
 

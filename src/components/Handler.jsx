@@ -165,6 +165,14 @@ const Handler = () => {
       body.style.color = "#bdbdca";
 			break;
 
+    // OUTLOOK
+		case /^o\/+/g.test(input):
+		case /^o$/g.test(input):
+      body.style.backgroundImage = "none";
+      body.style.backgroundColor = "#0f6cbd";
+      body.style.color = "#bdbdca";
+			break;
+
     default:
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#191919";
