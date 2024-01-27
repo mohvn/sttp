@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://github.com/m0cb/sttp/">
+    <a href="https://github.com/mdxv/sttp/">
         <img src="https://i.imgur.com/FGINGep.png" width="300"></a>
     <br><br>
     <a href="https://react.dev/"><img src="https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB"></a>
