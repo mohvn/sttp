@@ -81,6 +81,9 @@ const Form = () => {
 
         outlook_without_slash: /^o$/g,
         outlook_with_slash: /^o\/+/g,
+
+        notion_without_slash: /^no$/g,
+        notion_with_slash: /^no\/+/g,
       }
 
     const patterns = [
@@ -410,6 +413,18 @@ const Form = () => {
         pattern: list_of_patterns.outlook_with_slash,
         action: () => {
           window.open(`https://outlook.live.com/mail/0/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.notion_without_slash,
+        action: () => {
+          window.open(`https://www.notion.so/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.notion_with_slash,
+        action: () => {
+          window.open(`https://www.notion.so/`, "_self", false);
         }
       },
 

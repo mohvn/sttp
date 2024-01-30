@@ -173,6 +173,14 @@ const Handler = () => {
       body.style.color = "#bdbdca";
 			break;
 
+    // NOTION
+		case /^no\/+/g.test(input):
+		case /^no$/g.test(input):
+      body.style.backgroundImage = "none";
+      body.style.backgroundColor = "#ffffff";
+      body.style.color = "#37352f";
+			break;
+
     default:
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#191919";
