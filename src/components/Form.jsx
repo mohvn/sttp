@@ -87,6 +87,12 @@ const Form = () => {
 
         gdrive_without_slash: /^d$/g,
         gdrive_with_slash: /^d\/+/g,
+
+        habbo_without_slash: /^h$/g,
+        habbo_with_slash: /^h\/+/g,
+
+        unisantos_without_slash: /^u$/g,
+        unisantos_with_slash: /^u\/+/g,
       }
 
     const patterns = [
@@ -440,6 +446,30 @@ const Form = () => {
         pattern: list_of_patterns.gdrive_with_slash,
         action: () => {
           window.open(`https://drive.google.com/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.habbo_without_slash,
+        action: () => {
+          window.open(`https://habbo.com.br/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.habbo_with_slash,
+        action: () => {
+          window.open(`https://habbo.com.br/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.unisantos_without_slash,
+        action: () => {
+          window.open(`https://ww2.unisantos.br/portal/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.unisantos_with_slash,
+        action: () => {
+          window.open(`https://ww2.unisantos.br/portal/`, "_self", false);
         }
       },
 

@@ -188,6 +188,22 @@ const Handler = () => {
       body.style.color = "#d4d4d4";
       break;
 
+    // HABBO
+		case /^h\/+/g.test(input):
+		case /^h$/g.test(input):
+      body.style.backgroundImage = "none";
+      body.style.backgroundColor = "#f7c600";
+      body.style.color = "#000000";
+			break;
+
+    // UNISANTOS
+		case /^u\/+/g.test(input):
+		case /^u$/g.test(input):
+      body.style.backgroundImage = "none";
+      body.style.backgroundColor = "#52659b";
+      body.style.color = "#FFFFFF";
+			break;
+
     default:
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#191919";
