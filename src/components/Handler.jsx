@@ -181,6 +181,13 @@ const Handler = () => {
       body.style.color = "#37352f";
 			break;
 
+    // GDRIVE
+    case /^d\/+/g.test(input):
+    case /^d$/g.test(input):
+      body.style.backgroundImage = "linear-gradient(135deg, #FFD04B, #1EA362, #4688F3)";
+      body.style.color = "#d4d4d4";
+      break;
+
     default:
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#191919";

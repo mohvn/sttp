@@ -84,6 +84,9 @@ const Form = () => {
 
         notion_without_slash: /^no$/g,
         notion_with_slash: /^no\/+/g,
+
+        gdrive_without_slash: /^d$/g,
+        gdrive_with_slash: /^d\/+/g,
       }
 
     const patterns = [
@@ -425,6 +428,18 @@ const Form = () => {
         pattern: list_of_patterns.notion_with_slash,
         action: () => {
           window.open(`https://www.notion.so/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.gdrive_without_slash,
+        action: () => {
+          window.open(`https://drive.google.com/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.gdrive_with_slash,
+        action: () => {
+          window.open(`https://drive.google.com/`, "_self", false);
         }
       },
 
