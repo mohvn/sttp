@@ -93,6 +93,9 @@ const Form = () => {
 
         unisantos_without_slash: /^u$/g,
         unisantos_with_slash: /^u\/+/g,
+
+        protonmail_without_slash: /^pm$/g,
+        protonmail_with_slash: /^pm\/+/g,
       }
 
     const patterns = [
@@ -470,6 +473,18 @@ const Form = () => {
         pattern: list_of_patterns.unisantos_with_slash,
         action: () => {
           window.open(`https://ww2.unisantos.br/portal/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.protonmail_without_slash,
+        action: () => {
+          window.open(`https://mail.proton.me/u/4/inbox`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.protonmail_with_slash,
+        action: () => {
+          window.open(`https://mail.proton.me/u/4/inbox`, "_self", false);
         }
       },
 

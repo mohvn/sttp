@@ -204,6 +204,14 @@ const Handler = () => {
       body.style.color = "#FFFFFF";
 			break;
 
+    // PROTONMAIL
+		case /^pm\/+/g.test(input):
+		case /^pm$/g.test(input):
+      body.style.backgroundImage = "none";
+      body.style.backgroundColor = "#16141c";
+      body.style.color = "#FFFFFF";
+			break;
+
     default:
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#191919";
