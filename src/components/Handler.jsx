@@ -60,6 +60,7 @@ const Handler = () => {
     // MONKEYTYPE
     case /^mk\/+/g.test(input):
     case /^mk$/g.test(input):
+      body.style.backgroundImage = "none";
       body.style.backgroundColor = "#323437";
       body.style.color = "#d4d4d4";
       break;
@@ -82,6 +83,7 @@ const Handler = () => {
     case /^tr\/+/g.test(input):
     case /^tr$/g.test(input):
     case /^tr:/g.test(input):
+      body.style.backgroundImage = "none";
       body.style.backgroundColor = "rgb(26, 115, 232)";
       body.style.color = "#d4d4d4";
       break;
@@ -89,6 +91,7 @@ const Handler = () => {
     // DISCORD
     case /^dc\/+/g.test(input):
     case /^dc$/g.test(input):
+      body.style.backgroundImage = "none";
       body.style.backgroundColor = "#7289da";
       body.style.color = "#d4d4d4";
       break;
@@ -96,6 +99,7 @@ const Handler = () => {
     // GMAIL
     case /^m\/+/g.test(input):
     case /^m$/g.test(input):
+      body.style.backgroundImage = "none";
       body.style.backgroundColor = "#dd5145";
       body.style.color = "#d4d4d4";
       break;
@@ -124,6 +128,7 @@ const Handler = () => {
 		// PRIME VIDEO
 		case /^pv\/+/g.test(input):
 		case /^pv$/g.test(input):
+      body.style.backgroundImage = "none";
 			body.style.backgroundColor = "#1b242f";
       body.style.color = "#d4d4d4";
 			break;
@@ -131,6 +136,7 @@ const Handler = () => {
     // PINTEREST
 		case /^p\/+/g.test(input):
 		case /^p$/g.test(input):
+      body.style.backgroundImage = "none";
 			body.style.backgroundColor = "#c42027";
       body.style.color = "#d4d4d4";
 			break;
