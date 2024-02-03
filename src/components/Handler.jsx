@@ -210,6 +210,13 @@ const Handler = () => {
       body.style.color = "#FFFFFF";
 			break;
 
+    // CANVA
+		case /^cv\/+/g.test(input):
+		case /^cv$/g.test(input):
+      body.style.backgroundImage = "linear-gradient(135deg, #01c3cc, #7d2ae7)";
+      body.style.color = "#FFFFFF";
+			break;
+
     default:
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#191919";

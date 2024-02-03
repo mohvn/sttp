@@ -93,6 +93,15 @@ const Form = () => {
 
         unisantos_without_slash: /^u$/g,
         unisantos_with_slash: /^u\/+/g,
+<<<<<<< HEAD
+=======
+
+        protonmail_without_slash: /^pm$/g,
+        protonmail_with_slash: /^pm\/+/g,
+
+        canva_without_slash: /^cv$/g,
+        canva_with_slash: /^cv\/+/g,
+>>>>>>> 1f89654 (feat: added canva shortcut)
       }
 
     const patterns = [
@@ -470,6 +479,19 @@ const Form = () => {
         pattern: list_of_patterns.unisantos_with_slash,
         action: () => {
           window.open(`https://ww2.unisantos.br/portal/`, "_self", false);
+        }
+      },
+
+      {
+        pattern: list_of_patterns.canva_without_slash,
+        action: () => {
+          window.open(`https://www.canva.com/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.canva_witho_slash,
+        action: () => {
+          window.open(`https://www.canva.com/`, "_self", false);
         }
       },
 
