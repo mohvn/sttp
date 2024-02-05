@@ -489,7 +489,7 @@ const Form = () => {
         }
       },
       {
-        pattern: list_of_patterns.canva_witho_slash,
+        pattern: list_of_patterns.canva_with_slash,
         action: () => {
           window.open(`https://www.canva.com/`, "_self", false);
         }
