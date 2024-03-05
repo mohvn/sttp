@@ -93,15 +93,15 @@ const Form = () => {
 
         unisantos_without_slash: /^u$/g,
         unisantos_with_slash: /^u\/+/g,
-<<<<<<< HEAD
-=======
-
-        protonmail_without_slash: /^pm$/g,
-        protonmail_with_slash: /^pm\/+/g,
 
         canva_without_slash: /^cv$/g,
         canva_with_slash: /^cv\/+/g,
->>>>>>> 1f89654 (feat: added canva shortcut)
+
+        pontogo_without_slash: /^pg$/g,
+        pontogo_with_slash: /^pg\/+/g,
+
+        zoho_without_slash: /^z$/g,
+        zoho_with_slash: /^z\/+/g,
       }
 
     const patterns = [
@@ -492,6 +492,30 @@ const Form = () => {
         pattern: list_of_patterns.canva_with_slash,
         action: () => {
           window.open(`https://www.canva.com/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.pontogo_without_slash,
+        action: () => {
+          window.open(`https://pontogo.app/inicio/login`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.pontogo_with_slash,
+        action: () => {
+          window.open(`https://pontogo.app/inicio/login`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.zoho_without_slash,
+        action: () => {
+          window.open(`https://accounts.zoho.com/signin`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.zoho_with_slash,
+        action: () => {
+          window.open(`https://accounts.zoho.com/signin`, "_self", false);
         }
       },
 
