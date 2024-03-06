@@ -4,11 +4,11 @@ import Form from "./components/Form"
 
 function App() {
     return (
-    <div className="App">
-      <Clock />
-      <Form />
-      <Handler />
-    </div>
+      <div className="App">
+        <Clock />
+        <Form />
+        <Handler />
+      </div>
 
   )
 }
