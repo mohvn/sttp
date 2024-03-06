@@ -38,7 +38,7 @@ const Handler = () => {
     case /^g\/+/g.test(input):
     case /^g$/g.test(input):
     case /^g:/g.test(input):
-      body.style.backgroundImage = "linear-gradient(135deg, rgb(28, 33, 40), rgb(45, 51, 59)";
+      body.style.backgroundColor = "#1a1e22";
       body.style.color = "#d4d4d4";
       break;
 
