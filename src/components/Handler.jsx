@@ -217,21 +217,6 @@ const Handler = () => {
       body.style.color = "#FFFFFF";
 			break;
 
-    // PONTOGO 
-		case /^pg\/+/g.test(input):
-		case /^pg$/g.test(input):
-      body.style.backgroundImage = "none";
-      body.style.backgroundColor = "#000099";
-      body.style.color = "#FFFFFF";
-			break;
-    
-    // ZOHO 
-		case /^z\/+/g.test(input):
-		case /^z$/g.test(input):
-      body.style.backgroundImage = "linear-gradient(135deg, #e42527, #089949, #226db4, #f9b21d)";
-      body.style.color = "#FFFFFF";
-			break;
-
     default:
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#191919";
