@@ -232,6 +232,13 @@ const Handler = () => {
       body.style.color = "#FFFFFF";
 			break;
 
+    // ORANGE TESTING
+		case /^ot\/+/g.test(input):
+		case /^ot$/g.test(input):
+      body.style.backgroundImage = "linear-gradient(135deg, #ffa500, #dfd11e)";
+      body.style.color = "#FFFFFF";
+			break;
+
 
     default:
       body.style.backgroundImage = "none";
