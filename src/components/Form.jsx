@@ -105,6 +105,9 @@ const Form = () => {
 
         orangetest_without_slash: /^ot$/g,
         orangetest_with_slash: /^ot\/+/g,
+
+        shopee_without_slash: /^sh$/g,
+        shopee_with_slash: /^sh\/+/g,
       }
 
     const patterns = [
@@ -531,6 +534,18 @@ const Form = () => {
         pattern: list_of_patterns.orangetest_without_slash,
         action: () => {
           window.open(`https://app.orangetesting.com/login`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.shopee_without_slash,
+        action: () => {
+          window.open(`https://shopee.com.br/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.shopee_without_slash,
+        action: () => {
+          window.open(`https://shopee.com.br/`, "_self", false);
         }
       },
     ]

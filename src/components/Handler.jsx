@@ -239,6 +239,13 @@ const Handler = () => {
       body.style.color = "#FFFFFF";
 			break;
 
+    // SHOPEE  
+		case /^sh\/+/g.test(input):
+		case /^sh$/g.test(input):
+      body.style.backgroundImage = "linear-gradient(135deg, #f53d2d, #fe6432)";
+      body.style.color = "#FFFFFF";
+			break;
+
 
     default:
       body.style.backgroundImage = "none";
