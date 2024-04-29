@@ -17,12 +17,3 @@
 
 <img src="https://i.imgur.com/gJjuPwa.png">
 <img src="https://i.imgur.com/P09xCAJ.png">
-
-## Todo
-### In progress
-- [ ] Refactor all project to Next JS
-- [ ] Add command shortcut
-- [ ] Add help section
-- [ ] Add section with all prefixes
-
-### Done ✓
