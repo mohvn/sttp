@@ -246,6 +246,20 @@ const Handler = () => {
       body.style.color = "#FFFFFF";
 			break;
 
+    // MERCADO LIVRE
+		case /^ml$/g.test(input):
+      body.style.backgroundImage = "none";
+      body.style.backgroundColor = "#ffe600";
+      body.style.color = "#2a2a2a";
+			break;
+
+    // SPEED TEST
+		case /^st$/g.test(input):
+      body.style.backgroundImage = "none";
+      body.style.backgroundColor = "#141526";
+      body.style.color = "#ffffff";
+			break;
+
 
     default:
       body.style.backgroundImage = "none";

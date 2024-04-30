@@ -108,6 +108,12 @@ const Form = () => {
 
         shopee_without_slash: /^sh$/g,
         shopee_with_slash: /^sh\/+/g,
+
+        mercadolivre_without_slash: /^ml$/g,
+        mercadolivre_with_slash: /^ml\/+/g,
+
+        speedtest_without_slash: /^st$/g,
+        speedtest_with_slash: /^st\/+/g,
       }
 
     const patterns = [
@@ -525,7 +531,7 @@ const Form = () => {
         }
       },
       {
-        pattern: list_of_patterns.orangetest_without_slash,
+        pattern: list_of_patterns.orangetest_with_slash,
         action: () => {
           window.open(`https://app.orangetesting.com/login`, "_self", false);
         }
@@ -537,7 +543,7 @@ const Form = () => {
         }
       },
       {
-        pattern: list_of_patterns.shopee_without_slash,
+        pattern: list_of_patterns.shopee_with_slash,
         action: () => {
           window.open(`https://shopee.com.br/`, "_self", false);
         }
@@ -546,6 +552,18 @@ const Form = () => {
         pattern: list_of_patterns.shopee_without_slash,
         action: () => {
           window.open(`https://shopee.com.br/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.mercadolivre_without_slash,
+        action: () => {
+          window.open(`https://www.mercadolivre.com.br/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.speedtest_without_slash,
+        action: () => {
+          window.open(`https://www.speedtest.net/`, "_self", false);
         }
       },
     ]
