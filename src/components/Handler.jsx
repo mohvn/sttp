@@ -112,21 +112,18 @@ const Handler = () => {
       break;
 
     // HACKTHEBOX 
-    case /^htb\/+/g.test(input):
     case /^htb$/g.test(input):
       body.style.backgroundImage = "linear-gradient(135deg, #1A2332, #111927)";
       body.style.color = "#9FEF00";
       break;
     
     // TRYHACKME
-    case /^thm\/+/g.test(input):
     case /^thm$/g.test(input):
       body.style.backgroundImage = "linear-gradient(135deg, #1C2538, #161E2D)";
       body.style.color = "#d4d4d4";
       break;
 
 		// PRIME VIDEO
-		case /^pv\/+/g.test(input):
 		case /^pv$/g.test(input):
       body.style.backgroundImage = "none";
 			body.style.backgroundColor = "#1b242f";
@@ -134,29 +131,26 @@ const Handler = () => {
 			break;
 
     // PINTEREST
-		case /^p\/+/g.test(input):
 		case /^p$/g.test(input):
+		case /^p:/g.test(input):
       body.style.backgroundImage = "none";
 			body.style.backgroundColor = "#c42027";
       body.style.color = "#d4d4d4";
 			break;
 
     // LINKEDIN
-		case /^l\/+/g.test(input):
 		case /^l$/g.test(input):
       body.style.backgroundImage = "linear-gradient(135deg, #0a66c2, #0d86ff)";
       body.style.color = "#d4d4d4";
 			break;
 
     // ALIEXPRESS
-		case /^a\/+/g.test(input):
 		case /^a$/g.test(input):
       body.style.backgroundImage = "linear-gradient(135deg, #E52D03, #FD9300)";
       body.style.color = "#d4d4d4";
 			break;
 
     // TRELLO
-		case /^t\/+/g.test(input):
 		case /^t$/g.test(input):
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#0077bd";
@@ -164,7 +158,6 @@ const Handler = () => {
 			break;
 
     // CHATGPT
-		case /^c\/+/g.test(input):
 		case /^c$/g.test(input):
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#343541";
@@ -172,7 +165,6 @@ const Handler = () => {
 			break;
 
     // OUTLOOK
-		case /^o\/+/g.test(input):
 		case /^o$/g.test(input):
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#0f6cbd";
@@ -180,7 +172,6 @@ const Handler = () => {
 			break;
 
     // NOTION
-		case /^no\/+/g.test(input):
 		case /^no$/g.test(input):
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#ffffff";
@@ -188,14 +179,12 @@ const Handler = () => {
 			break;
 
     // GDRIVE
-    case /^d\/+/g.test(input):
     case /^d$/g.test(input):
       body.style.backgroundImage = "linear-gradient(135deg, #FFD04B, #1EA362, #4688F3)";
       body.style.color = "#d4d4d4";
       break;
 
     // HABBO
-		case /^h\/+/g.test(input):
 		case /^h$/g.test(input):
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#f7c600";
@@ -203,7 +192,6 @@ const Handler = () => {
 			break;
 
     // UNISANTOS
-		case /^u\/+/g.test(input):
 		case /^u$/g.test(input):
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#52659b";
@@ -211,14 +199,12 @@ const Handler = () => {
 			break;
 
     // CANVA
-		case /^cv\/+/g.test(input):
 		case /^cv$/g.test(input):
       body.style.backgroundImage = "linear-gradient(135deg, #01c3cc, #7d2ae7)";
       body.style.color = "#FFFFFF";
 			break;
 
     // PONTOGO 
-		case /^pg\/+/g.test(input):
 		case /^pg$/g.test(input):
       body.style.backgroundImage = "none";
       body.style.backgroundColor = "#000099";
@@ -226,21 +212,18 @@ const Handler = () => {
 			break;
 
     // ZOHO 
-		case /^z\/+/g.test(input):
 		case /^z$/g.test(input):
       body.style.backgroundImage = "linear-gradient(135deg, #e42527, #089949, #226db4, #f9b21d)";
       body.style.color = "#FFFFFF";
 			break;
 
     // ORANGE TESTING
-		case /^ot\/+/g.test(input):
 		case /^ot$/g.test(input):
       body.style.backgroundImage = "linear-gradient(135deg, #ffa500, #dfd11e)";
       body.style.color = "#FFFFFF";
 			break;
 
     // SHOPEE  
-		case /^sh\/+/g.test(input):
 		case /^sh$/g.test(input):
       body.style.backgroundImage = "linear-gradient(135deg, #f53d2d, #fe6432)";
       body.style.color = "#FFFFFF";

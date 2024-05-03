@@ -66,6 +66,7 @@ const Form = () => {
 
         pinterest_without_slash: /^p$/g,
         pinterest_with_slash: /^p\/.*/g,
+        pinterest_with_colon: /^p:/g,
 
         chat_gpt_without_slash: /^c$/g,
         chat_gpt_with_slash: /^c\/.*/g,
@@ -343,19 +344,7 @@ const Form = () => {
         }
       },
       {
-        pattern: list_of_patterns.hackthebox_with_slash,
-        action: () => {
-          window.open("https://app.hackthebox.com/login/", "_self", false);
-        }
-      },
-      {
         pattern: list_of_patterns.tryhackme_without_slash,
-        action: () => {
-          window.open("https://tryhackme.com/login/", "_self", false);
-        }
-      },
-      {
-        pattern: list_of_patterns.tryhackme_with_slash,
         action: () => {
           window.open("https://tryhackme.com/login/", "_self", false);
         }
@@ -367,31 +356,20 @@ const Form = () => {
         }
       },
       {
-        pattern: list_of_patterns.primevideo_with_slash,
-        action: () => {
-          window.open("https://primevideo.com/", "_self", false);
-        }
-      },
-      {
         pattern: list_of_patterns.pinterest_without_slash,
         action: () => {
           window.open("https://pinterest.com/", "_self", false);
         }
       },
       {
-        pattern: list_of_patterns.pinterest_with_slash,
+        pattern: list_of_patterns.pinterest_with_colon,
         action: () => {
-          window.open("https://pinterest.com/", "_self", false);
+          let p_input = input.replace(/^p\/+/g, "");
+          window.open(`https://br.pinterest.com/search/pins/?q=${p_input}`, "_self", false);
         }
       },
       {
         pattern: list_of_patterns.chat_gpt_without_slash,
-        action: () => {
-          window.open("https://chat.openai.com/", "_self", false);
-        }
-      },
-      {
-        pattern: list_of_patterns.chat_gpt_with_slash,
         action: () => {
           window.open("https://chat.openai.com/", "_self", false);
         }
@@ -416,19 +394,7 @@ const Form = () => {
         }
       },
       {
-        pattern: list_of_patterns.aliexpress_with_slash,
-        action: () => {
-          window.open(`https://www.aliexpress.com/`, "_self", false);
-        }
-      },
-      {
         pattern: list_of_patterns.trello_without_slash,
-        action: () => {
-          window.open(`https://trello.com/`, "_self", false);
-        }
-      },
-      {
-        pattern: list_of_patterns.trello_with_slash,
         action: () => {
           window.open(`https://trello.com/`, "_self", false);
         }
@@ -440,19 +406,7 @@ const Form = () => {
         }
       },
       {
-        pattern: list_of_patterns.outlook_with_slash,
-        action: () => {
-          window.open(`https://outlook.live.com/mail/0/`, "_self", false);
-        }
-      },
-      {
         pattern: list_of_patterns.notion_without_slash,
-        action: () => {
-          window.open(`https://www.notion.so/`, "_self", false);
-        }
-      },
-      {
-        pattern: list_of_patterns.notion_with_slash,
         action: () => {
           window.open(`https://www.notion.so/`, "_self", false);
         }
@@ -464,19 +418,7 @@ const Form = () => {
         }
       },
       {
-        pattern: list_of_patterns.gdrive_with_slash,
-        action: () => {
-          window.open(`https://drive.google.com/`, "_self", false);
-        }
-      },
-      {
         pattern: list_of_patterns.habbo_without_slash,
-        action: () => {
-          window.open(`https://habbo.com.br/`, "_self", false);
-        }
-      },
-      {
-        pattern: list_of_patterns.habbo_with_slash,
         action: () => {
           window.open(`https://habbo.com.br/`, "_self", false);
         }
@@ -501,19 +443,7 @@ const Form = () => {
         }
       },
       {
-        pattern: list_of_patterns.canva_with_slash,
-        action: () => {
-          window.open(`https://www.canva.com/`, "_self", false);
-        }
-      },
-      {
         pattern: list_of_patterns.pontogo_without_slash,
-        action: () => {
-          window.open(`https://pontogo.app/inicio/login`, "_self", false);
-        }
-      },
-      {
-        pattern: list_of_patterns.pontogo_with_slash,
         action: () => {
           window.open(`https://pontogo.app/inicio/login`, "_self", false);
         }
@@ -525,27 +455,9 @@ const Form = () => {
         }
       },
       {
-        pattern: list_of_patterns.zoho_with_slash,
-        action: () => {
-          window.open(`https://mail.zoho.com/zm/`, "_self", false);
-        }
-      },
-      {
-        pattern: list_of_patterns.orangetest_with_slash,
-        action: () => {
-          window.open(`https://app.orangetesting.com/login`, "_self", false);
-        }
-      },
-      {
         pattern: list_of_patterns.orangetest_without_slash,
         action: () => {
           window.open(`https://app.orangetesting.com/login`, "_self", false);
-        }
-      },
-      {
-        pattern: list_of_patterns.shopee_with_slash,
-        action: () => {
-          window.open(`https://shopee.com.br/`, "_self", false);
         }
       },
       {
