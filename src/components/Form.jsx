@@ -75,7 +75,7 @@ const Form = () => {
         linkedin_with_slash: /^l\/+/g,
 
         aliexpress_without_slash: /^a$/g,
-        aliexpress_with_slash: /^a\/+/g,
+        aliexpress_with_colon: /^a:/g,
 
         trello_without_slash: /^t$/g,
         trello_with_slash: /^t\/+/g,
@@ -364,7 +364,7 @@ const Form = () => {
       {
         pattern: list_of_patterns.pinterest_with_colon,
         action: () => {
-          let p_input = input.replace(/^p\/+/g, "");
+          let p_input = input.replace(/^p:/g, "");
           window.open(`https://br.pinterest.com/search/pins/?q=${p_input}`, "_self", false);
         }
       },
@@ -391,6 +391,13 @@ const Form = () => {
         pattern: list_of_patterns.aliexpress_without_slash,
         action: () => {
           window.open(`https://www.aliexpress.com/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.aliexpress_with_colon,
+        action: () => {
+          let a_input = input.replace(/^a:/g, "");
+          window.open(`https://pt.aliexpress.com/w/wholesale-${a_input}.html`, "_self", false)
         }
       },
       {
