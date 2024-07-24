@@ -12,7 +12,7 @@
 **sttp** is a minimalist homepage designed to be used as a new tab in your browser. It offers a clean, streamlined browsing experience with a modern, distraction-free design.
 
 <h4 align="center">
-  <a href="https://m0cb.github.io/sttp">Visit the Website</a>
+  <a href="https://mdxv.github.io/sttp">Visit the Website</a>
 </h4>
 
 <img src="https://i.imgur.com/gJjuPwa.png">
