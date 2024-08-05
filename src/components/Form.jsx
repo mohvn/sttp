@@ -115,6 +115,10 @@ const Form = () => {
 
         speedtest_without_slash: /^st$/g,
         speedtest_with_slash: /^st\/+/g,
+
+        notion_calendar_without_slash: /^nc$/g,
+        notion_calendar_with_slash: /^nc\/+/g,
+
       }
 
     const patterns = [
@@ -483,6 +487,12 @@ const Form = () => {
         pattern: list_of_patterns.speedtest_without_slash,
         action: () => {
           window.open(`https://www.speedtest.net/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.notion_calendar_without_slash,
+        action: () => {
+          window.open(`https://calendar.notion.so/`, "_self", false);
         }
       },
     ]

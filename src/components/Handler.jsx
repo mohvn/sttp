@@ -244,6 +244,13 @@ const Handler = () => {
       body.style.color = "#ffffff";
 			break;
 
+      // NOTION CALENDAR 
+		case /^nc$/g.test(input):
+      body.style.backgroundImage = "none";
+      body.style.backgroundColor = "#242424";
+      body.style.color = "#ffffff";
+			break;
+
 
     default:
       body.style.backgroundImage = "none";
