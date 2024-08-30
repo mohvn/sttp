@@ -104,9 +104,6 @@ const Form = () => {
         zoho_without_slash: /^z$/g,
         zoho_with_slash: /^z\/+/g,
 
-        orangetest_without_slash: /^ot$/g,
-        orangetest_with_slash: /^ot\/+/g,
-
         shopee_without_slash: /^sh$/g,
         shopee_with_slash: /^sh\/+/g,
 
@@ -463,12 +460,6 @@ const Form = () => {
         pattern: list_of_patterns.zoho_without_slash,
         action: () => {
           window.open(`https://mail.zoho.com/zm/`, "_self", false);
-        }
-      },
-      {
-        pattern: list_of_patterns.orangetest_without_slash,
-        action: () => {
-          window.open(`https://app.orangetesting.com/login`, "_self", false);
         }
       },
       {
