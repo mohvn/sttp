@@ -116,6 +116,9 @@ const Form = () => {
         notion_calendar_without_slash: /^nc$/g,
         notion_calendar_with_slash: /^nc\/+/g,
 
+        figma_without_slash: /^f$/g,
+        figma_with_slash: /^f\/+/g,
+
       }
 
     const patterns = [
@@ -484,6 +487,18 @@ const Form = () => {
         pattern: list_of_patterns.notion_calendar_without_slash,
         action: () => {
           window.open(`https://calendar.notion.so/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.figma_with_slash,
+        action: () => {
+          window.open(`https://www.figma.com/`, "_self", false);
+        }
+      },
+      {
+        pattern: list_of_patterns.figma_without_slash,
+        action: () => {
+          window.open(`https://figma.com/`, "_self", false);
         }
       },
     ]

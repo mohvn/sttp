@@ -245,6 +245,13 @@ const Handler = () => {
       body.style.color = "#ffffff";
 			break;
 
+    // FIGMA
+		case /^f$/g.test(input):
+      body.style.backgroundImage = "none";
+        body.style.backgroundColor = "#2c2c2c";
+      body.style.color = "#ffffff";
+			break;
+
 
     default:
       body.style.backgroundImage = "none";
