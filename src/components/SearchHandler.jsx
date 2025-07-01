@@ -5,22 +5,34 @@ const SearchHandler = () => {
   const sites = {
     r: {
       patterns: [/^r$/, /^r\/.*/],
-      url: (input) => input === 'r' ? 'https://reddit.com/' : `https://reddit.com/${input.slice(2)}`,
+      url: (input) => input === 'r' ? 'https://reddit.com/' : `https://reddit.com/r/${input.slice(2)}`,
       style: { backgroundImage: "linear-gradient(135deg, rgb(255, 132, 86), rgb(255, 69, 0))", color: "#d4d4d4" }
     },
     tt: {
       patterns: [/^tt$/, /^tt\/.*/, /^tt:/],
-      url: (input) => input === 'tt' ? 'https://twitter.com/' : `https://twitter.com/${input.slice(3)}`,
+      url: (input) => {
+        if (input === 'tt') return 'https://twitter.com/';
+        if (input.startsWith('tt:')) return `https://twitter.com/search?q=${encodeURIComponent(input.slice(3))}`;
+        return `https://twitter.com/${input.slice(3)}`;
+      },
       style: { backgroundImage: "linear-gradient(135deg, rgb(29, 161, 242), rgb(25, 96, 143))", color: "#d4d4d4" }
     },
     y: {
       patterns: [/^y$/, /^y\/.*/, /^y:/],
-      url: (input) => input === 'y' ? 'https://youtube.com/' : `https://youtube.com/${input.slice(2)}`,
+      url: (input) => {
+        if (input === 'y') return 'https://youtube.com/';
+        if (input.startsWith('y:')) return `https://youtube.com/results?search_query=${encodeURIComponent(input.slice(2))}`;
+        return `https://youtube.com/${input.slice(2)}`;
+      },
       style: { backgroundImage: "linear-gradient(135deg, rgb(205, 32, 31), rgb(205, 76, 31))", color: "#d4d4d4" }
     },
     g: {
       patterns: [/^g$/, /^g\/.*/, /^g:/],
-      url: (input) => input === 'g' ? 'https://github.com/' : `https://github.com/${input.slice(2)}`,
+      url: (input) => {
+        if (input === 'g') return 'https://github.com/';
+        if (input.startsWith('g:')) return `https://github.com/search?q=${encodeURIComponent(input.slice(2))}`;
+        return `https://github.com/${input.slice(2)}`;
+      },
       style: { backgroundImage: "linear-gradient(135deg, rgb(28, 33, 40), rgb(45, 51, 59))", color: "#d4d4d4" }
     },
     i: {
@@ -30,7 +42,12 @@ const SearchHandler = () => {
     },
     tw: {
       patterns: [/^tw$/, /^tw\/.*/, /^tw:/],
-      url: (input) => input === 'tw' ? 'https://twitch.tv/' : `https://twitch.tv/${input.slice(3)}`,
+
+      url: (input) => {
+        if (input === 'tw') return 'https://twitch.tv/';
+        if (input.startsWith('tw:')) return `https://twitch.tv/search?term=${encodeURIComponent(input.slice(3))}`;
+        return `https://twitch.tv/${input.slice(3)}`;
+      },
       style: { backgroundImage: "linear-gradient(135deg, rgb(169, 112, 255), rgb(67, 44, 101))", color: "#d4d4d4" }
     },
     mk: {
@@ -50,7 +67,12 @@ const SearchHandler = () => {
     },
     tr: {
       patterns: [/^tr$/, /^tr\/.*/, /^tr:/],
-      url: () => 'https://translate.google.com/',
+
+      url: (input) => {
+        if (input === 'tr') return 'https://translate.google.com/';
+        if (input.startsWith('tr:')) return `https://translate.google.com/?text=${encodeURIComponent(input.slice(3))}`;
+        return `https://translate.google.com/${input.slice(3)}`;
+      },
       style: { backgroundImage: "none", backgroundColor: "rgb(26, 115, 232)", color: "#d4d4d4" }
     },
     dc: {
@@ -68,6 +90,24 @@ const SearchHandler = () => {
       url: () => 'https://netflix.com/',
       style: { backgroundImage: "linear-gradient(135deg, #E50914, #CB020C)", color: "#d4d4d4" }
     },
+    p: {
+      patterns: [/^p$/, /^p:.*/],
+      url: (input) => {
+        if (input === 'p') return 'https://pinterest.com/';
+        if (input.startsWith('p:')) return `https://pinterest.com/search/pins/?q=${encodeURIComponent(input.slice(2))}`;
+        return 'https://pinterest.com/';
+      },
+      style: { backgroundImage: "none", backgroundColor: "#c42027", color: "#d4d4d4" }
+    },
+    a: {
+      patterns: [/^a$/, /^a:/],
+      url: (input) => {
+        if (input === 'a') return 'https://aliexpress.com/';
+        if (input.startsWith('a:')) return `https://www.aliexpress.com/wholesale?SearchText=${encodeURIComponent(input.slice(2))}`;
+        return 'https://aliexpress.com/';
+      },
+      style: { backgroundImage: "linear-gradient(135deg, #E52D03, #FD9300)", color: "#d4d4d4" }
+    },
     htb: {
       patterns: [/^htb$/],
       url: () => 'https://hackthebox.com/',
@@ -83,20 +123,10 @@ const SearchHandler = () => {
       url: () => 'https://primevideo.com/',
       style: { backgroundImage: "none", backgroundColor: "#1b242f", color: "#d4d4d4" }
     },
-    p: {
-      patterns: [/^p$/, /^p:/],
-      url: () => 'https://pinterest.com/',
-      style: { backgroundImage: "none", backgroundColor: "#c42027", color: "#d4d4d4" }
-    },
     l: {
       patterns: [/^l$/],
       url: () => 'https://linkedin.com/',
       style: { backgroundImage: "linear-gradient(135deg, #0a66c2, #0d86ff)", color: "#d4d4d4" }
-    },
-    a: {
-      patterns: [/^a$/, /^a:/],
-      url: () => 'https://aliexpress.com/',
-      style: { backgroundImage: "linear-gradient(135deg, #E52D03, #FD9300)", color: "#d4d4d4" }
     },
     t: {
       patterns: [/^t$/],
