@@ -271,7 +271,7 @@ export function Settings() {
             onClick={(e) => e.currentTarget.blur()}
           >
             <div className="icon">
-              <SettingsIconIcon className="size-4" />
+              <SettingsIconIcon size={18} />
             </div>
           </button>
         </DialogTrigger>
