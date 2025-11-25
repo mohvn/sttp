@@ -210,7 +210,7 @@ const SearchHandler = () => {
   };
 
   const body = document.body;
-  const defaultStyle = { backgroundImage: "none", backgroundColor: "#6D4AFF", color: "#d4d4d4" };
+  const defaultStyle = { backgroundImage: "none", backgroundColor: "#101010", color: "#d4d4d4" };
 
   const applyBackground = (input) => {
     for (const [key, site] of Object.entries(sites)) {
