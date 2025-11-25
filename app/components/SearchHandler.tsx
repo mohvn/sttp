@@ -1,7 +1,21 @@
-import React, { useEffect } from 'react';
+'use client'
+
+import { useEffect } from 'react'
+
+interface SiteStyle {
+  backgroundImage?: string
+  backgroundColor?: string
+  color: string
+}
+
+interface Site {
+  patterns: RegExp[]
+  url: (input: string) => string
+  style: SiteStyle
+}
 
 const SearchHandler = () => {
-  const sites = {
+  const sites: Record<string, Site> = {
     r: {
       patterns: [/^r$/, /^r\/.*/],
       url: (input) => input === 'r' ? 'https://reddit.com/' : `https://reddit.com/r/${input.slice(2)}`,
@@ -10,27 +24,27 @@ const SearchHandler = () => {
     tt: {
       patterns: [/^tt$/, /^tt\/.*/, /^tt:/],
       url: (input) => {
-        if (input === 'tt') return 'https://twitter.com/';
-        if (input.startsWith('tt:')) return `https://twitter.com/search?q=${encodeURIComponent(input.slice(3))}`;
-        return `https://twitter.com/${input.slice(3)}`;
+        if (input === 'tt') return 'https://twitter.com/'
+        if (input.startsWith('tt:')) return `https://twitter.com/search?q=${encodeURIComponent(input.slice(3))}`
+        return `https://twitter.com/${input.slice(3)}`
       },
       style: { backgroundImage: "linear-gradient(135deg, rgb(29, 161, 242), rgb(25, 96, 143))", color: "#d4d4d4" }
     },
     y: {
       patterns: [/^y$/, /^y\/.*/, /^y:/],
       url: (input) => {
-        if (input === 'y') return 'https://youtube.com/';
-        if (input.startsWith('y:')) return `https://youtube.com/results?search_query=${encodeURIComponent(input.slice(2))}`;
-        return `https://youtube.com/${input.slice(2)}`;
+        if (input === 'y') return 'https://youtube.com/'
+        if (input.startsWith('y:')) return `https://youtube.com/results?search_query=${encodeURIComponent(input.slice(2))}`
+        return `https://youtube.com/${input.slice(2)}`
       },
       style: { backgroundImage: "linear-gradient(135deg, rgb(205, 32, 31), rgb(205, 76, 31))", color: "#d4d4d4" }
     },
     g: {
       patterns: [/^g$/, /^g\/.*/, /^g:/],
       url: (input) => {
-        if (input === 'g') return 'https://github.com/';
-        if (input.startsWith('g:')) return `https://github.com/search?q=${encodeURIComponent(input.slice(2))}`;
-        return `https://github.com/${input.slice(2)}`;
+        if (input === 'g') return 'https://github.com/'
+        if (input.startsWith('g:')) return `https://github.com/search?q=${encodeURIComponent(input.slice(2))}`
+        return `https://github.com/${input.slice(2)}`
       },
       style: { backgroundImage: "linear-gradient(135deg, rgb(28, 33, 40), rgb(45, 51, 59))", color: "#d4d4d4" }
     },
@@ -41,11 +55,10 @@ const SearchHandler = () => {
     },
     tw: {
       patterns: [/^tw$/, /^tw\/.*/, /^tw:/],
-
       url: (input) => {
-        if (input === 'tw') return 'https://twitch.tv/';
-        if (input.startsWith('tw:')) return `https://twitch.tv/search?term=${encodeURIComponent(input.slice(3))}`;
-        return `https://twitch.tv/${input.slice(3)}`;
+        if (input === 'tw') return 'https://twitch.tv/'
+        if (input.startsWith('tw:')) return `https://twitch.tv/search?term=${encodeURIComponent(input.slice(3))}`
+        return `https://twitch.tv/${input.slice(3)}`
       },
       style: { backgroundImage: "linear-gradient(135deg, rgb(169, 112, 255), rgb(67, 44, 101))", color: "#d4d4d4" }
     },
@@ -66,11 +79,10 @@ const SearchHandler = () => {
     },
     tr: {
       patterns: [/^tr$/, /^tr\/.*/, /^tr:/],
-
       url: (input) => {
-        if (input === 'tr') return 'https://translate.google.com/';
-        if (input.startsWith('tr:')) return `https://translate.google.com/?text=${encodeURIComponent(input.slice(3))}`;
-        return `https://translate.google.com/${input.slice(3)}`;
+        if (input === 'tr') return 'https://translate.google.com/'
+        if (input.startsWith('tr:')) return `https://translate.google.com/?text=${encodeURIComponent(input.slice(3))}`
+        return `https://translate.google.com/${input.slice(3)}`
       },
       style: { backgroundImage: "none", backgroundColor: "rgb(26, 115, 232)", color: "#d4d4d4" }
     },
@@ -92,18 +104,18 @@ const SearchHandler = () => {
     p: {
       patterns: [/^p$/, /^p:.*/],
       url: (input) => {
-        if (input === 'p') return 'https://pinterest.com/';
-        if (input.startsWith('p:')) return `https://pinterest.com/search/pins/?q=${encodeURIComponent(input.slice(2))}`;
-        return 'https://pinterest.com/';
+        if (input === 'p') return 'https://pinterest.com/'
+        if (input.startsWith('p:')) return `https://pinterest.com/search/pins/?q=${encodeURIComponent(input.slice(2))}`
+        return 'https://pinterest.com/'
       },
       style: { backgroundImage: "none", backgroundColor: "#c42027", color: "#d4d4d4" }
     },
     a: {
       patterns: [/^a$/, /^a:/],
       url: (input) => {
-        if (input === 'a') return 'https://aliexpress.com/';
-        if (input.startsWith('a:')) return `https://www.aliexpress.com/wholesale?SearchText=${encodeURIComponent(input.slice(2))}`;
-        return 'https://aliexpress.com/';
+        if (input === 'a') return 'https://aliexpress.com/'
+        if (input.startsWith('a:')) return `https://www.aliexpress.com/wholesale?SearchText=${encodeURIComponent(input.slice(2))}`
+        return 'https://aliexpress.com/'
       },
       style: { backgroundImage: "linear-gradient(135deg, #E52D03, #FD9300)", color: "#d4d4d4" }
     },
@@ -207,109 +219,122 @@ const SearchHandler = () => {
       url: () => 'https://mail.proton.me/u/0/inbox',
       style: { backgroundImage: "none", backgroundColor: "#6D4AFF", color: "#ffffff" }
     }
-  };
+  }
 
-  const body = document.body;
-  const defaultStyle = { backgroundImage: "none", backgroundColor: "#101010", color: "#d4d4d4" };
-
-  const applyBackground = (input) => {
-    for (const [key, site] of Object.entries(sites)) {
-      if (site.patterns.some(pattern => pattern.test(input))) {
-        Object.assign(body.style, site.style);
-        return;
-      }
-    }
-    Object.assign(body.style, defaultStyle);
-  };
-
-  const processInput = (input) => {
-    const urlPatterns = [
-      { pattern: /(http|https):\/\//, action: (match) => window.open(match, "_self") },
-      { pattern: /(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/, action: (match) => window.open(`http://${match}`, "_self") },
-      { pattern: /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/, action: (match) => window.open(`http://${match}`, "_self") }
-    ];
-
-    for (const { pattern, action } of urlPatterns) {
-      if (pattern.test(input)) {
-        action(input);
-        return;
-      }
-    }
-
-    for (const [key, site] of Object.entries(sites)) {
-      if (site.patterns.some(pattern => pattern.test(input))) {
-        window.open(site.url(input), "_self");
-        return;
-      }
-    }
-
-    window.open(`https://google.com/search?q=${encodeURIComponent(input)}`, "_self");
-  };
+  const defaultStyle: SiteStyle = { backgroundImage: "none", backgroundColor: "#101010", color: "#d4d4d4" }
 
   useEffect(() => {
-    const Clock = document.getElementById('Clock');
-    const Search = document.getElementById('Search');
+    const body = document.body
+    const Clock = document.getElementById('Clock') as HTMLElement | null
+    const Search = document.getElementById('Search') as HTMLTextAreaElement | null
 
-    const keydownHandler = (event) => {
-      const ignoredKeys = ['Escape', 'ScrollLock', 'AltLeft', 'AltRight', 'ControlLeft', 'ControlRight', 'ShiftRight', 'ShiftLeft', 'CapsLock', 'Tab', 'OsLeft', 'OSRight', 'Enter', 'Backspace', 'Meta', 'MetaLeft'];
+    if (!Clock || !Search) return
+
+    const applyBackground = (input: string) => {
+      for (const [key, site] of Object.entries(sites)) {
+        if (site.patterns.some(pattern => pattern.test(input))) {
+          Object.assign(body.style, site.style)
+          return
+        }
+      }
+      Object.assign(body.style, defaultStyle)
+    }
+
+    const processInput = (input: string) => {
+      interface UrlPattern {
+        pattern: RegExp
+        action: (match: string) => void
+      }
+
+      const urlPatterns: UrlPattern[] = [
+        { pattern: /(http|https):\/\//, action: (match) => window.open(match, "_self") },
+        { pattern: /(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/, action: (match) => window.open(`http://${match}`, "_self") },
+        { pattern: /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/, action: (match) => window.open(`http://${match}`, "_self") }
+      ]
+
+      for (const { pattern, action } of urlPatterns) {
+        if (pattern.test(input)) {
+          action(input)
+          return
+        }
+      }
+
+      for (const [key, site] of Object.entries(sites)) {
+        if (site.patterns.some(pattern => pattern.test(input))) {
+          window.open(site.url(input), "_self")
+          return
+        }
+      }
+
+      window.open(`https://google.com/search?q=${encodeURIComponent(input)}`, "_self")
+    }
+
+    const keydownHandler = (event: KeyboardEvent) => {
+      const ignoredKeys = ['Escape', 'ScrollLock', 'AltLeft', 'AltRight', 'ControlLeft', 'ControlRight', 'ShiftRight', 'ShiftLeft', 'CapsLock', 'Tab', 'OsLeft', 'OSRight', 'Enter', 'Backspace', 'Meta', 'MetaLeft']
 
       if (event.code === 'Escape') {
-        Clock.style.display = "block";
-        Search.value = "";
-        Search.style.display = "none";
-        Search.blur();
-        Object.assign(body.style, defaultStyle);
-        return;
+        Clock.style.display = "block"
+        Search.value = ""
+        Search.style.display = "none"
+        Search.blur()
+        Object.assign(body.style, defaultStyle)
+        return
       }
 
       if (!ignoredKeys.includes(event.code)) {
-        Clock.style.display = "none";
-        Search.style.display = "block";
-        Search.focus();
+        Clock.style.display = "none"
+        Search.style.display = "block"
+        Search.focus()
       }
-    };
+    }
 
     const keyupHandler = () => {
       if (Search.value === "") {
-        Search.style.display = "none";
-        Search.blur();
-        Clock.style.display = "block";
-        Object.assign(body.style, defaultStyle);
+        Search.style.display = "none"
+        Search.blur()
+        Clock.style.display = "block"
+        Object.assign(body.style, defaultStyle)
       } else {
-        applyBackground(Search.value);
+        applyBackground(Search.value)
       }
-    };
+    }
 
     const blurHandler = () => {
-      Search.style.display = "none";
-      Clock.style.display = "block";
-      Search.value = "";
-      Object.assign(body.style, defaultStyle);
-    };
+      Search.style.display = "none"
+      Clock.style.display = "block"
+      Search.value = ""
+      Object.assign(body.style, defaultStyle)
+    }
 
-    const keypressHandler = (event) => {
+    const keypressHandler = (event: KeyboardEvent) => {
       if (event.code === "Enter" || event.code === "NumpadEnter") {
-        event.preventDefault();
-        processInput(Search.value);
+        event.preventDefault()
+        processInput(Search.value)
       }
-    };
+    }
 
-    window.addEventListener('keydown', keydownHandler);
-    Search.addEventListener('keyup', keyupHandler);
-    Search.addEventListener('blur', blurHandler);
-    Search.addEventListener('keypress', keypressHandler);
+    window.addEventListener('keydown', keydownHandler)
+    Search.addEventListener('keyup', keyupHandler)
+    Search.addEventListener('blur', blurHandler)
+    Search.addEventListener('keypress', keypressHandler)
 
     return () => {
-      window.removeEventListener('keydown', keydownHandler);
-      Search.removeEventListener('keyup', keyupHandler);
-      Search.removeEventListener('blur', blurHandler);
-      Search.removeEventListener('keypress', keypressHandler);
-    };
-  }, []);
+      window.removeEventListener('keydown', keydownHandler)
+      Search.removeEventListener('keyup', keyupHandler)
+      Search.removeEventListener('blur', blurHandler)
+      Search.removeEventListener('keypress', keypressHandler)
+    }
+  }, [])
 
   return (
-    <textarea id="Search" spellCheck="false" wrap="off"></textarea>
-  );
-};
+    <textarea
+      id="Search"
+      spellCheck="false"
+      wrap="off"
+      className="font-sans w-[98%] font-bold overflow-hidden text-center absolute left-1/2 top-[47%] -translate-x-1/2 -translate-y-1/2 hidden resize-none text-[32px] bg-transparent text-inherit border-0 outline-none focus:outline-none focus:ring-0 focus-visible:outline-none appearance-none"
+    ></textarea>
+  )
+}
 
-export default SearchHandler;
+export default SearchHandler
+
