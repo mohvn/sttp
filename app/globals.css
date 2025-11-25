@@ -8,6 +8,7 @@
   :root {
     --background: 0 0% 6.3%; /* #101010 */
     --foreground: 0 0% 83.1%; /* #d4d4d4 */
+    --font-family: 'Geist', sans-serif;
 
     --card: 0 0% 6.3%;
     --card-foreground: 0 0% 83.1%;
@@ -39,10 +40,12 @@
 
   * {
     @apply border-border;
+    font-family: var(--font-family);
   }
 
   body {
     @apply h-full m-0 bg-no-repeat bg-fixed bg-background text-foreground;
+    font-family: var(--font-family);
   }
 }
 

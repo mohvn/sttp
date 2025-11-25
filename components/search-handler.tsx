@@ -230,6 +230,31 @@ const SearchHandler = () => {
 
     if (!Clock || !Search) return
 
+    const getSettings = () => {
+      // Try multiple selectors to find the settings button
+      // The DialogTrigger with asChild may clone the element, so we need flexible selectors
+      const byId = document.getElementById('Settings')
+      if (byId) return byId
+
+      const byDataAttr = document.querySelector('button[data-settings-button="true"]') as HTMLElement
+      if (byDataAttr) return byDataAttr
+
+      const byTitle = document.querySelector('button[title="settings"]') as HTMLElement
+      if (byTitle) return byTitle
+
+      const byClass = document.querySelector('.view-settings') as HTMLElement
+      if (byClass) return byClass
+
+      // Last resort: find button in top-right corner with icon
+      const buttons = document.querySelectorAll('button.fixed.top-4.right-4')
+      for (const btn of buttons) {
+        const el = btn as HTMLElement
+        if (el.querySelector('.icon')) return el
+      }
+
+      return null
+    }
+
     const applyBackground = (input: string) => {
       for (const site of Object.values(sites)) {
         if (site.patterns.some(pattern => pattern.test(input))) {
@@ -270,10 +295,14 @@ const SearchHandler = () => {
     }
 
     const keydownHandler = (event: KeyboardEvent) => {
-      const ignoredKeys = ['Escape', 'ScrollLock', 'AltLeft', 'AltRight', 'ControlLeft', 'ControlRight', 'ShiftRight', 'ShiftLeft', 'CapsLock', 'Tab', 'OsLeft', 'OSRight', 'Enter', 'Backspace', 'Meta', 'MetaLeft']
-
+      // Handle Escape key first, even if in input/textarea
       if (event.code === 'Escape') {
         Clock.style.display = "block"
+        const Settings = getSettings()
+        if (Settings) {
+          Settings.style.display = "block"
+          Settings.style.visibility = "visible"
+        }
         Search.value = ""
         Search.style.display = "none"
         Search.blur()
@@ -281,8 +310,28 @@ const SearchHandler = () => {
         return
       }
 
+      // Ignore if user is typing in an input, textarea, or contenteditable element
+      const target = event.target as HTMLElement
+      if (
+        target.tagName === 'INPUT' ||
+        target.tagName === 'TEXTAREA' ||
+        target.isContentEditable ||
+        target.closest('input') ||
+        target.closest('textarea') ||
+        target.closest('[contenteditable="true"]')
+      ) {
+        return
+      }
+
+      const ignoredKeys = ['ScrollLock', 'AltLeft', 'AltRight', 'ControlLeft', 'ControlRight', 'ShiftRight', 'ShiftLeft', 'CapsLock', 'Tab', 'OsLeft', 'OSRight', 'Enter', 'Backspace', 'Meta', 'MetaLeft']
+
       if (!ignoredKeys.includes(event.code)) {
         Clock.style.display = "none"
+        const Settings = getSettings()
+        if (Settings) {
+          Settings.style.display = "none"
+          Settings.style.visibility = "hidden"
+        }
         Search.style.display = "block"
         Search.focus()
       }
@@ -293,6 +342,11 @@ const SearchHandler = () => {
         Search.style.display = "none"
         Search.blur()
         Clock.style.display = "block"
+        const Settings = getSettings()
+        if (Settings) {
+          Settings.style.display = "block"
+          Settings.style.visibility = "visible"
+        }
         Object.assign(body.style, defaultStyle)
       } else {
         applyBackground(Search.value)
@@ -302,6 +356,11 @@ const SearchHandler = () => {
     const blurHandler = () => {
       Search.style.display = "none"
       Clock.style.display = "block"
+      const Settings = getSettings()
+      if (Settings) {
+        Settings.style.display = "block"
+        Settings.style.visibility = "visible"
+      }
       Search.value = ""
       Object.assign(body.style, defaultStyle)
     }
@@ -331,7 +390,7 @@ const SearchHandler = () => {
       id="Search"
       spellCheck="false"
       wrap="off"
-      className="w-[98%] font-bold overflow-hidden text-center absolute left-1/2 top-[47%] -translate-x-1/2 -translate-y-1/2 hidden resize-none text-[32px] bg-transparent text-inherit border-0 outline-none focus:outline-none focus:ring-0 focus-visible:outline-none appearance-none"
+      className="w-[98%] font-bold overflow-hidden text-center fixed left-1/2 top-[47%] -translate-x-1/2 -translate-y-1/2 hidden resize-none text-[32px] bg-transparent text-inherit border-0 outline-none focus:outline-none focus:ring-0 focus-visible:outline-none appearance-none"
       style={{ fontFamily: 'var(--font-family)' }}
     ></textarea>
   )
