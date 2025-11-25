@@ -331,7 +331,8 @@ const SearchHandler = () => {
       id="Search"
       spellCheck="false"
       wrap="off"
-      className="font-sans w-[98%] font-bold overflow-hidden text-center absolute left-1/2 top-[47%] -translate-x-1/2 -translate-y-1/2 hidden resize-none text-[32px] bg-transparent text-inherit border-0 outline-none focus:outline-none focus:ring-0 focus-visible:outline-none appearance-none"
+      className="w-[98%] font-bold overflow-hidden text-center absolute left-1/2 top-[47%] -translate-x-1/2 -translate-y-1/2 hidden resize-none text-[32px] bg-transparent text-inherit border-0 outline-none focus:outline-none focus:ring-0 focus-visible:outline-none appearance-none"
+      style={{ fontFamily: 'var(--font-family)' }}
     ></textarea>
   )
 }

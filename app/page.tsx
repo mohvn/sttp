@@ -1,5 +1,5 @@
-import Clock from './components/Clock'
-import SearchHandler from './components/SearchHandler'
+import Clock from '@/components/clock'
+import SearchHandler from '@/components/search-handler'
 
 export default function Home() {
   return (

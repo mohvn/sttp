@@ -17,7 +17,8 @@ const Clock = () => {
   return (
     <time
       id="Clock"
-      className="font-sans text-[88px] font-extrabold absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 block text-center tracking-[0.05rem]"
+      className="text-[88px] font-extrabold absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 block text-center tracking-[0.05rem]"
+      style={{ fontFamily: 'var(--font-family)' }}
     >
       {clockState}
     </time>
