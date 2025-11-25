@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 
 const SearchHandler = () => {
-  // Configuration of websites with standards, URLs and styles
   const sites = {
     r: {
       patterns: [/^r$/, /^r\/.*/],
@@ -155,7 +154,7 @@ const SearchHandler = () => {
     },
     h: {
       patterns: [/^h$/],
-      url: () => 'https://habbo.com/',
+      url: () => 'https://habbo.com.br/',
       style: { backgroundImage: "none", backgroundColor: "#f7c600", color: "#000000" }
     },
     u: {
@@ -202,13 +201,17 @@ const SearchHandler = () => {
       patterns: [/^f$/],
       url: () => 'https://figma.com/',
       style: { backgroundImage: "none", backgroundColor: "#2c2c2c", color: "#ffffff" }
+    },
+    pm: {
+      patterns: [/^pm$/],
+      url: () => 'https://mail.proton.me/u/0/inbox',
+      style: { backgroundImage: "none", backgroundColor: "#6D4AFF", color: "#ffffff" }
     }
   };
 
   const body = document.body;
-  const defaultStyle = { backgroundImage: "none", backgroundColor: "#101010", color: "#d4d4d4" };
+  const defaultStyle = { backgroundImage: "none", backgroundColor: "#6D4AFF", color: "#d4d4d4" };
 
-  // Function to apply background styles
   const applyBackground = (input) => {
     for (const [key, site] of Object.entries(sites)) {
       if (site.patterns.some(pattern => pattern.test(input))) {
@@ -219,9 +222,7 @@ const SearchHandler = () => {
     Object.assign(body.style, defaultStyle);
   };
 
-  // Function to process input and redirect
   const processInput = (input) => {
-    // Check URLs
     const urlPatterns = [
       { pattern: /(http|https):\/\//, action: (match) => window.open(match, "_self") },
       { pattern: /(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/, action: (match) => window.open(`http://${match}`, "_self") },
@@ -235,7 +236,6 @@ const SearchHandler = () => {
       }
     }
 
-    // Configured Sites Verification
     for (const [key, site] of Object.entries(sites)) {
       if (site.patterns.some(pattern => pattern.test(input))) {
         window.open(site.url(input), "_self");
@@ -243,7 +243,6 @@ const SearchHandler = () => {
       }
     }
 
-    // Google Search as Fallback
     window.open(`https://google.com/search?q=${encodeURIComponent(input)}`, "_self");
   };
 
@@ -251,10 +250,9 @@ const SearchHandler = () => {
     const Clock = document.getElementById('Clock');
     const Search = document.getElementById('Search');
 
-    // Handler for keys
     const keydownHandler = (event) => {
       const ignoredKeys = ['Escape', 'ScrollLock', 'AltLeft', 'AltRight', 'ControlLeft', 'ControlRight', 'ShiftRight', 'ShiftLeft', 'CapsLock', 'Tab', 'OsLeft', 'OSRight', 'Enter', 'Backspace', 'Meta', 'MetaLeft'];
-      
+
       if (event.code === 'Escape') {
         Clock.style.display = "block";
         Search.value = "";
@@ -263,7 +261,7 @@ const SearchHandler = () => {
         Object.assign(body.style, defaultStyle);
         return;
       }
-      
+
       if (!ignoredKeys.includes(event.code)) {
         Clock.style.display = "none";
         Search.style.display = "block";
@@ -271,7 +269,6 @@ const SearchHandler = () => {
       }
     };
 
-    // Handler for input
     const keyupHandler = () => {
       if (Search.value === "") {
         Search.style.display = "none";
@@ -283,7 +280,6 @@ const SearchHandler = () => {
       }
     };
 
-    // Handler for blur
     const blurHandler = () => {
       Search.style.display = "none";
       Clock.style.display = "block";
@@ -291,7 +287,6 @@ const SearchHandler = () => {
       Object.assign(body.style, defaultStyle);
     };
 
-    // Handler for Enter
     const keypressHandler = (event) => {
       if (event.code === "Enter" || event.code === "NumpadEnter") {
         event.preventDefault();
@@ -299,13 +294,11 @@ const SearchHandler = () => {
       }
     };
 
-    // Add event listeners
     window.addEventListener('keydown', keydownHandler);
     Search.addEventListener('keyup', keyupHandler);
     Search.addEventListener('blur', blurHandler);
     Search.addEventListener('keypress', keypressHandler);
 
-    // Cleanup
     return () => {
       window.removeEventListener('keydown', keydownHandler);
       Search.removeEventListener('keyup', keyupHandler);
