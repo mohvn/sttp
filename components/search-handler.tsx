@@ -231,8 +231,6 @@ const SearchHandler = () => {
     if (!Clock || !Search) return
 
     const getSettings = () => {
-      // Try multiple selectors to find the settings button
-      // The DialogTrigger with asChild may clone the element, so we need flexible selectors
       const byId = document.getElementById('Settings')
       if (byId) return byId
 
@@ -245,7 +243,6 @@ const SearchHandler = () => {
       const byClass = document.querySelector('.view-settings') as HTMLElement
       if (byClass) return byClass
 
-      // Last resort: find button in top-right corner with icon
       const buttons = document.querySelectorAll('button.fixed.top-4.right-4')
       for (const btn of buttons) {
         const el = btn as HTMLElement
@@ -295,7 +292,6 @@ const SearchHandler = () => {
     }
 
     const keydownHandler = (event: KeyboardEvent) => {
-      // Handle Escape key first, even if in input/textarea
       if (event.code === 'Escape') {
         Clock.style.display = "block"
         const Settings = getSettings()
@@ -310,7 +306,6 @@ const SearchHandler = () => {
         return
       }
 
-      // Ignore if user is typing in an input, textarea, or contenteditable element
       const target = event.target as HTMLElement
       if (
         target.tagName === 'INPUT' ||

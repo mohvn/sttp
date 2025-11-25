@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useMemo, useCallback } from 'react'
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import { Search, Check, X } from 'lucide-react'
 import {
   Dialog,
@@ -24,6 +24,12 @@ const fonts: Font[] = [
     name: 'Geist',
     family: "'Geist', sans-serif",
     googleFontUrl: "https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+  },
+  {
+    id: 'geist-mono',
+    name: 'Geist Mono',
+    family: "'Geist Mono', monospace",
+    googleFontUrl: "https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap"
   },
   {
     id: 'inter',
@@ -152,6 +158,9 @@ export function Settings() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedFont, setSelectedFont] = useState<string>('geist')
   const [loadedFonts, setLoadedFonts] = useState<Set<string>>(new Set(['geist']))
+  const [focusedIndex, setFocusedIndex] = useState<number>(-1)
+  const listContainerRef = useRef<HTMLDivElement>(null)
+  const buttonRefs = useRef<(HTMLButtonElement | null)[]>([])
 
   const loadFont = useCallback((fontId: string) => {
     setLoadedFonts(prev => {
@@ -174,14 +183,11 @@ export function Settings() {
     const font = fonts.find(f => f.id === fontId)
     if (font) {
       loadFont(fontId)
-      // Apply font immediately
       document.documentElement.style.setProperty('--font-family', font.family)
-      // Save to localStorage
       localStorage.setItem('font-family', fontId)
     }
   }, [loadFont])
 
-  // Load all fonts when dialog opens
   useEffect(() => {
     if (open) {
       fonts.forEach(font => {
@@ -193,20 +199,16 @@ export function Settings() {
   }, [open, loadedFonts, loadFont])
 
   useEffect(() => {
-    // Load saved font preference on mount
     const savedFont = localStorage.getItem('font-family')
     if (savedFont) {
       const font = fonts.find(f => f.id === savedFont)
       if (font) {
         setSelectedFont(savedFont)
-        // Load font first, then apply
         loadFont(savedFont)
-        // Use setTimeout to ensure font is loaded
         setTimeout(() => {
           document.documentElement.style.setProperty('--font-family', font.family)
         }, 100)
       } else {
-        // Invalid font, reset to default
         applyFont('geist')
       }
     } else {
@@ -219,10 +221,8 @@ export function Settings() {
     applyFont(fontId)
   }
 
-  // Handle Ctrl+K / Cmd+K shortcut
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      // Check if user is typing in an input or textarea
       const target = event.target as HTMLElement
       if (
         target.tagName === 'INPUT' ||
@@ -235,7 +235,6 @@ export function Settings() {
         return
       }
 
-      // Check for Ctrl+K (Windows/Linux) or Cmd+K (Mac)
       if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
         event.preventDefault()
         setOpen(true)
@@ -257,6 +256,88 @@ export function Settings() {
     )
   }, [searchQuery])
 
+  useEffect(() => {
+    if (open) {
+      setFocusedIndex(-1)
+    }
+  }, [open, searchQuery])
+
+  useEffect(() => {
+    if (focusedIndex >= 0 && focusedIndex < filteredFonts.length) {
+      const button = buttonRefs.current[focusedIndex]
+      if (button && listContainerRef.current) {
+        button.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+      }
+    }
+  }, [focusedIndex, filteredFonts.length])
+
+  useEffect(() => {
+    if (!open) return
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement
+      const isInputFocused = target.tagName === 'INPUT' && target.closest('[role="dialog"]')
+
+      if (event.key === 'Enter') {
+        if (filteredFonts.length === 0) return
+
+        event.preventDefault()
+
+        if (focusedIndex >= 0 && focusedIndex < filteredFonts.length) {
+          const font = filteredFonts[focusedIndex]
+          if (font) {
+            handleFontSelect(font.id)
+            setOpen(false)
+          }
+        } else {
+          const font = filteredFonts[0]
+          if (font) {
+            handleFontSelect(font.id)
+            setOpen(false)
+          }
+        }
+        return
+      }
+
+      if (isInputFocused) {
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+          event.preventDefault()
+          if (filteredFonts.length === 0) return
+
+          if (event.key === 'ArrowDown') {
+            setFocusedIndex(prev =>
+              prev < filteredFonts.length - 1 ? prev + 1 : 0
+            )
+          } else {
+            setFocusedIndex(prev =>
+              prev > 0 ? prev - 1 : filteredFonts.length - 1
+            )
+          }
+        }
+        return
+      }
+
+      if (event.key === 'ArrowDown') {
+        event.preventDefault()
+        if (filteredFonts.length === 0) return
+        setFocusedIndex(prev =>
+          prev < filteredFonts.length - 1 ? prev + 1 : 0
+        )
+      } else if (event.key === 'ArrowUp') {
+        event.preventDefault()
+        if (filteredFonts.length === 0) return
+        setFocusedIndex(prev =>
+          prev > 0 ? prev - 1 : filteredFonts.length - 1
+        )
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [open, filteredFonts, focusedIndex])
+
   return (
     <>
       <Dialog open={open} onOpenChange={setOpen}>
@@ -264,7 +345,7 @@ export function Settings() {
           <button
             id="Settings"
             type="button"
-            className="fixed top-4 right-4 z-50 textButton view-settings inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:opacity-80"
+            className="fixed top-4 right-4 z-50 textButton view-settings inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none text-muted-foreground"
             aria-label="Settings"
             title="settings"
             data-settings-button="true"
@@ -303,22 +384,29 @@ export function Settings() {
               </DialogClose>
             </div>
 
-            {/* Font List */}
-            <div className="max-h-96 overflow-y-auto overscroll-contain p-1">
+            <div
+              ref={listContainerRef}
+              className="max-h-96 overflow-y-auto overscroll-contain p-1"
+            >
               {filteredFonts.length === 0 ? (
                 <div className="py-8 text-center text-sm text-muted-foreground">
                   No fonts found
                 </div>
               ) : (
                 <div className="overflow-hidden text-foreground">
-                  {filteredFonts.map((font) => (
+                  {filteredFonts.map((font, index) => (
                     <button
                       key={font.id}
+                      ref={(el) => {
+                        buttonRefs.current[index] = el
+                      }}
                       onClick={() => handleFontSelect(font.id)}
+                      onMouseEnter={() => setFocusedIndex(index)}
                       className={cn(
                         "relative flex items-center gap-2 rounded-sm px-2 py-1.5 scroll-m-2 text-sm select-none cursor-pointer transition-colors outline-none w-full text-left",
                         "hover:bg-accent hover:text-accent-foreground",
-                        selectedFont === font.id && "bg-accent text-accent-foreground"
+                        selectedFont === font.id && "bg-accent text-accent-foreground",
+                        focusedIndex === index && "bg-accent/50 text-accent-foreground"
                       )}
                     >
                       <span className="flex-1 truncate" style={{ fontFamily: font.family }}>
