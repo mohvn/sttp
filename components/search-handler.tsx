@@ -230,28 +230,6 @@ const SearchHandler = () => {
 
     if (!Clock || !Search) return
 
-    const getSettings = () => {
-      const byId = document.getElementById('Settings')
-      if (byId) return byId
-
-      const byDataAttr = document.querySelector('button[data-settings-button="true"]') as HTMLElement
-      if (byDataAttr) return byDataAttr
-
-      const byTitle = document.querySelector('button[title="settings"]') as HTMLElement
-      if (byTitle) return byTitle
-
-      const byClass = document.querySelector('.view-settings') as HTMLElement
-      if (byClass) return byClass
-
-      const buttons = document.querySelectorAll('button.fixed.top-4.right-4')
-      for (const btn of buttons) {
-        const el = btn as HTMLElement
-        if (el.querySelector('.icon')) return el
-      }
-
-      return null
-    }
-
     const applyBackground = (input: string) => {
       for (const site of Object.values(sites)) {
         if (site.patterns.some(pattern => pattern.test(input))) {
@@ -294,11 +272,6 @@ const SearchHandler = () => {
     const keydownHandler = (event: KeyboardEvent) => {
       if (event.code === 'Escape') {
         Clock.style.display = "block"
-        const Settings = getSettings()
-        if (Settings) {
-          Settings.style.display = "block"
-          Settings.style.visibility = "visible"
-        }
         Search.value = ""
         Search.style.display = "none"
         Search.blur()
@@ -322,11 +295,6 @@ const SearchHandler = () => {
 
       if (!ignoredKeys.includes(event.code)) {
         Clock.style.display = "none"
-        const Settings = getSettings()
-        if (Settings) {
-          Settings.style.display = "none"
-          Settings.style.visibility = "hidden"
-        }
         Search.style.display = "block"
         Search.focus()
       }
@@ -337,11 +305,6 @@ const SearchHandler = () => {
         Search.style.display = "none"
         Search.blur()
         Clock.style.display = "block"
-        const Settings = getSettings()
-        if (Settings) {
-          Settings.style.display = "block"
-          Settings.style.visibility = "visible"
-        }
         Object.assign(body.style, defaultStyle)
       } else {
         applyBackground(Search.value)
@@ -351,11 +314,6 @@ const SearchHandler = () => {
     const blurHandler = () => {
       Search.style.display = "none"
       Clock.style.display = "block"
-      const Settings = getSettings()
-      if (Settings) {
-        Settings.style.display = "block"
-        Settings.style.visibility = "visible"
-      }
       Search.value = ""
       Object.assign(body.style, defaultStyle)
     }
